@@ -10,7 +10,6 @@ class AuthController extends Controller
 {
     public function signin(Request $request)
     {
-        //return  bcrypt($request->password);
         if($token = JWTAuth::getToken()){
             try{
                 JWTAuth::invalidate($token);
@@ -22,6 +21,16 @@ class AuthController extends Controller
             return $this->error('用户名或密码错误');
         }
         return $this->success(['token' => $token]);
+    }
+
+    public function signout(Request $request){
+        if($token = JWTAuth::getToken()){
+            try{
+                JWTAuth::invalidate($token);
+            }catch(\Exception $e){
+            }
+        }
+        return $this->success();
     }
 
 

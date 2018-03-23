@@ -11,6 +11,7 @@
 |
 */
 
+//路由指向入口文件,/api/xxx指向api.php路由文件
 Route::get('/{vue?}', function () {
         return view('index');
 })->where('vue', '[\/\w\.-]*');

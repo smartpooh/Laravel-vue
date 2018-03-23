@@ -20,5 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 */
 
 Route::post('/signin', "AuthController@signin");
-    //menu
-Route::get('menu', 'MenuController@index');
+
+Route::group(['middleware' => ['auth:api']], function(){
+    Route::post('/signout', "AuthController@signout");
+    Route::get('menu', 'MenuController@index');
+});
+    
+    
+    

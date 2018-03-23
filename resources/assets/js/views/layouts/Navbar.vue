@@ -39,10 +39,10 @@
                    break;
                case 'signout':
                    this.$http.post('/api/signout').then((res) => {
-                           //sessionStorage.clear();
-                           //this.$message.success("退出成功");
-                           //this.$router.push("/signin");
-                           });
+                       sessionStorage.clear();
+                       this.$message.success("退出成功");
+                       this.$router.push("/signin");
+                   });
                    break;
            }
         },
